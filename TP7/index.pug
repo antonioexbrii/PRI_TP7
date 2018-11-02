@@ -1,0 +1,26 @@
+extends layout
+block content
+	.w3.container.w3-light-blue
+		header.w3-container.w3-indigo
+			h2 Submissao de Ficheiros
+		form.w3-container(action='/processaForm',method='POST',enctype='multipart/form-data')
+			label Ficheiro
+			input.w3-input.w3-border.w3-light-grey(type='file',name='ficheiro')
+			label Descricao
+			input.w3-input.w3-border.w3-light-grey(type='text',name='desc')
+			input.w3-btn.w3-blue-grey(type='submit',align='right',value='ENVIAR')
+	.w3.container.w3-light-blue
+		header.w3-container.w3-indigo
+			h2 Listagem de ficheiros
+		table.w3-table
+			tr
+				th Ficheiro
+				th Descricao
+			if lst
+				each fich in lst
+					tr
+						td
+							a(href='uploaded/'+ fich.ficheiro)= fich.ficheiro
+						td= fich.desc
+		footer.w3-container.w3-indigo
+			address PRI2018  TP7  A75870
